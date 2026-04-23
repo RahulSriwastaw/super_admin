@@ -1,0 +1,54 @@
+version: "2"
+type: frontend
+tech_stack:
+  - TypeScript
+  - Next.js 16.1 (Turbopack)
+  - React 19
+  - Tailwind CSS 4
+  - Lucide React
+  - Shadcn UI
+  - Zustand (sidebarStore)
+routes:
+  - path: /
+    file: src/app/page.tsx
+    auth_required: true
+    description: Super Admin main dashboard
+  - path: /mockbook
+    file: src/app/mockbook/page.tsx
+    auth_required: true
+    description: MockBook platform management, test series, and analytics
+  - path: /mockbook/categories
+    file: src/app/mockbook/categories/page.tsx
+    auth_required: true
+    description: Category management for test series
+  - path: /mockbook/test-series/create
+    file: src/app/mockbook/test-series/create/page.tsx
+    auth_required: true
+    description: Create new test series
+  - path: /login
+    file: src/app/login/page.tsx
+    auth_required: false
+    description: Admin login page
+features:
+  - name: MockBook Management
+    description: Comprehensive dashboard for managing platform-wide test series, live tests, and pricing.
+    files:
+      - src/app/mockbook/page.tsx
+      - src/services/mockbookService.ts
+    entry_route: /mockbook
+    user_interactions:
+      - View KPI stats for platform tests, series, attempts, and students
+      - Filter test series by name, category, and status
+      - View live tests currently running
+      - Navigate to category management or featured series
+    api_calls:
+      - method: GET
+        endpoint: /api/mockbook/stats
+      - method: GET
+        endpoint: /api/mockbook/folders
+      - method: GET
+        endpoint: /api/mockbook/series
+      - method: GET
+        endpoint: /api/mockbook/live-tests
+    auth_required: true
+known_limitations: []

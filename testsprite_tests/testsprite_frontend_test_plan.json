@@ -1,0 +1,766 @@
+[
+  {
+    "id": "TC001",
+    "title": "Login with valid credentials lands on dashboard",
+    "description": "Verifies a Super Admin can log in and reach the protected dashboard.",
+    "category": "Login",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_PASSWORD}} into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user lands on the dashboard"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Login with invalid password shows authentication error",
+    "description": "Verifies invalid credentials prevent login and display an error state.",
+    "category": "Login",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill valid@email.com into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill wrong-password into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an authentication error message is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user remains on the login page"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Dashboard shows KPI stats and can navigate to MockBook management",
+    "description": "Verifies the dashboard primary KPI content loads and MockBook section is reachable via UI navigation.",
+    "category": "Super Admin Dashboard",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_PASSWORD}} into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation option to open MockBook management"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify MockBook management content is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Unauthenticated visit to dashboard redirects to login",
+    "description": "Verifies protected dashboard route is not accessible without authentication.",
+    "category": "Super Admin Dashboard",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the user is on the login page"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "MockBook management loads KPI stats and lists series/live tests",
+    "description": "Verifies the MockBook management page loads its primary content including KPI stats and data sections.",
+    "category": "MockBook Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_PASSWORD}} into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation option to open MockBook management"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify KPI stats for platform tests, series, attempts, and students are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify test series and live tests are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Filter test series by name reduces results",
+    "description": "Verifies filtering by name updates the visible test series list based on typed criteria.",
+    "category": "MockBook Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_PASSWORD}} into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation option to open MockBook management"
+      },
+      {
+        "type": "action",
+        "description": "Fill Sample into the test series name filter field"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify only test series matching Sample are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Filter test series by category and status updates results",
+    "description": "Verifies category and status filters can be applied to change the visible set of test series.",
+    "category": "MockBook Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_PASSWORD}} into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation option to open MockBook management"
+      },
+      {
+        "type": "action",
+        "description": "Select a category in the category filter"
+      },
+      {
+        "type": "action",
+        "description": "Select a status in the status filter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the test series list reflects the selected category and status filters"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Selecting a live test opens its details view",
+    "description": "Verifies a live test can be selected and its details are shown.",
+    "category": "MockBook Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_PASSWORD}} into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation option to open MockBook management"
+      },
+      {
+        "type": "action",
+        "description": "Click a live test in the live tests list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify live test details are displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Navigate from MockBook management to category management",
+    "description": "Verifies category management is reachable from the MockBook management page via UI navigation.",
+    "category": "MockBook Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_PASSWORD}} into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation option to open MockBook management"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation option to open category management"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify category management content is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "No-match filters show empty state with guidance",
+    "description": "Verifies an empty-state appears when filters produce no matching test series.",
+    "category": "MockBook Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_USER}} into the email field"
+      },
+      {
+        "type": "action",
+        "description": "Fill {{LOGIN_PASSWORD}} into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation option to open MockBook management"
+      },
+      {
+        "type": "action",
+        "description": "Fill zz-no-matches-12345 into the test series name filter field"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty state message is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify suggestions to broaden or clear filters are visible"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Category Management: create a new category and see it in the list",
+    "description": "Creates a new category from the category management page and verifies it appears in the category list.",
+    "category": "Category Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation item for MockBook categories"
+      },
+      {
+        "type": "action",
+        "description": "Fill valid details for a new category using the name Category Auto 001"
+      },
+      {
+        "type": "action",
+        "description": "Save the new category"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the category list contains Category Auto 001"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Category Management: validation for empty category details",
+    "description": "Attempts to save a category with missing required information and verifies a validation error is shown.",
+    "category": "Category Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation item for MockBook categories"
+      },
+      {
+        "type": "action",
+        "description": "Clear required category input fields so they are empty"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to save the new category"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a validation error is visible with guidance to fix the input"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Category Management: categories page loads primary content",
+    "description": "Verifies the category management page loads and displays the existing categories list with counts or an empty state.",
+    "category": "Category Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation item for MockBook categories"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the categories list is displayed or an empty state is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Category Management: prevent duplicate save via rapid repeat submit",
+    "description": "Submits the create category form twice quickly and verifies only one new list entry is created for the submitted name.",
+    "category": "Category Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation item for MockBook categories"
+      },
+      {
+        "type": "action",
+        "description": "Fill valid details for a new category using the name Category Auto 002"
+      },
+      {
+        "type": "action",
+        "description": "Click save twice quickly"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the category list contains a single entry for Category Auto 002"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Category Management: cancel/abandon new category entry does not add to list",
+    "description": "Starts entering a new category but does not save, and verifies it is not added to the list.",
+    "category": "Category Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation item for MockBook categories"
+      },
+      {
+        "type": "action",
+        "description": "Fill valid details for a new category using the name Category Auto 003"
+      },
+      {
+        "type": "action",
+        "description": "Click away from the form without saving"
+      },
+      {
+        "type": "action",
+        "description": "Refresh the page"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the category list does not contain Category Auto 003"
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Create Test Series: create a new test series and confirm it appears in the series list",
+    "description": "Creates a new test series with required fields and verifies it appears in the MockBook series list.",
+    "category": "Create Test Series",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation item to create a new MockBook test series"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the test series title with Series Auto 001"
+      },
+      {
+        "type": "action",
+        "description": "Add at least one valid section"
+      },
+      {
+        "type": "action",
+        "description": "Fill a valid schedule for the test series"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid visibility setting"
+      },
+      {
+        "type": "action",
+        "description": "Configure a valid basic pricing setting if available"
+      },
+      {
+        "type": "action",
+        "description": "Save the test series"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation item for MockBook management"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the test series list contains Series Auto 001"
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Create Test Series: validation when required field is missing",
+    "description": "Attempts to save a test series while omitting a required field and verifies a validation error is shown.",
+    "category": "Create Test Series",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Click the navigation item to create a new MockBook test series"
+      },
+      {
+        "type": "action",
+        "description": "Leave at least one required field empty such as the title or schedule"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to save the test series"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a validation error is visible describing the missing required information"
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Create Test Series: create page loads primary content",
+    "description": "Verifies the create test series page loads and shows the form for configuring test series details.",
+    "category": "Create Test Series",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /mockbook/test-series/create"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the test series creation form is displayed"
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "Create Test Series: schedule input enforces validity",
+    "description": "Enters an invalid schedule configuration and verifies the UI blocks saving with a schedule validation error.",
+    "category": "Create Test Series",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /mockbook/test-series/create"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the test series title with Series Auto 002"
+      },
+      {
+        "type": "action",
+        "description": "Add at least one valid section"
+      },
+      {
+        "type": "action",
+        "description": "Fill an invalid schedule configuration such as an end time earlier than the start time"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to save the test series"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a schedule validation error is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC020",
+    "title": "Create Test Series: visibility affects available pricing options",
+    "description": "Selects a visibility setting that changes pricing applicability and verifies pricing controls update accordingly.",
+    "category": "Create Test Series",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the email field with {{LOGIN_USER}}"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the password field with {{LOGIN_PASSWORD}}"
+      },
+      {
+        "type": "action",
+        "description": "Submit the login form"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /mockbook/test-series/create"
+      },
+      {
+        "type": "action",
+        "description": "Select a visibility setting that should disable or hide pricing"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify pricing configuration controls are disabled or hidden when pricing is not applicable"
+      }
+    ]
+  }
+]
